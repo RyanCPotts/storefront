@@ -1,29 +1,30 @@
 import {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import React from 'react'
 
 function Header() {
 
-  const [currentLeader, setCurrentLeader] = useState({});
+  // const [currentLeader, setCurrentLeader] = useState({});
 
-  const votes = useSelector((state) => state.votes);
-  const candidates = useSelector((state) => state.candidates);
+  // const votes = useSelector((state) => state.votes);
+  // const candidates = useSelector((state) => state.candidates);
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    let leader = candidates.reduce((leader, candidate) => {
-      return candidate.votes > leader.votes ? candidate : leader;
-    });
+  //   let leader = candidates.reduce((leader, candidate) => {
+  //     return candidate.votes > leader.votes ? candidate : leader;
+  //   });
 
-    setCurrentLeader(leader);
+  //   setCurrentLeader(leader);
 
-  }, [candidates]);
+  // }, [candidates]);
 
 
   return (
     <header>
-      <h1>Decision '24</h1>
-      <h3>Leader: <span>{currentLeader.name}</span></h3>
-      <h3>Votes: <span>{votes.totalVotes}</span></h3>
+      <h1>Storefront</h1>
+      {/* <h3>Leader: <span>{currentLeader.name}</span></h3>
+      <h3>Votes: <span>{votes.totalVotes}</span></h3> */}
     </header>
   );
 }
