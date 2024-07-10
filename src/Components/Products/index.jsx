@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import {Card, Typography, Button} from '@mui/material'
-import { addToCart} from '../../store/actions';
+import { addToCart, addToCartAndUpdateStock} from '../../store/actions';
+import { PanoramaWideAngleSelectRounded } from '@mui/icons-material';
 
 const Products = ()=>{
 const filteredProducts = useSelector(state => state.products.filteredProducts)
@@ -10,7 +11,14 @@ const categories = useSelector(state => state.categories.categories)
 const dispatch = useDispatch()
 
 const activeCategoryDetails = categories.find(category => category.name === activeCategory)
-console.log(filteredProducts)
+
+
+const handleAddToCart = (product)=>{
+    if(product.inStock > 0){
+        dispatch(addToCartAndUpdateStock(product))
+        console.log('product decements', product.inStock)
+    }
+}
     return(
        <>
        {activeCategory && (
@@ -22,7 +30,7 @@ console.log(filteredProducts)
                 <Typography variant = 'h5' gutterBottom>{product.name}</Typography>
                 <Typography variant = 'body2'>{product.description}</Typography>
                 <Typography variant = 'body1'>${product.price}</Typography>
-                <Button onClick = {()=>dispatch(addToCart(product))}>Add To Cart</Button>
+                <Button onClick = {()=>handleAddToCart(product)} disabled = {product.inStock <= 0}>Add To Cart</Button>
             </Card>
         ))}
         </div>
