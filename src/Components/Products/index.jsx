@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {Card, Typography, Button} from '@mui/material'
 import { addToCart, addToCartAndUpdateStock} from '../../store/actions';
 import { PanoramaWideAngleSelectRounded } from '@mui/icons-material';
+import {Link} from 'react-router-dom'
 
 const Products = ()=>{
 const filteredProducts = useSelector(state => state.products.filteredProducts)
@@ -31,6 +32,7 @@ const handleAddToCart = (product)=>{
                 <Typography variant = 'body2'>{product.description}</Typography>
                 <Typography variant = 'body1'>${product.price}</Typography>
                 <Button onClick = {()=>handleAddToCart(product)} disabled = {product.inStock <= 0}>Add To Cart</Button>
+                <Button component={Link}to={`/products/${product.id}`}>View Details</Button>
             </Card>
         ))}
         </div>
