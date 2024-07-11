@@ -8,7 +8,7 @@ const ShoppingCart = ()=>{
 const cartItems = useSelector(state=>state.cart.cartItems)
 console.log(cartItems)
 const calculateTotal = ()=>{
-    let cartItemsTotal = cartItems.reduce((total, item)=>total+item.price, 0)
+    let cartItemsTotal = cartItems.reduce((total, item)=>total+parseInt(item.price), 0)
     console.log(cartItemsTotal)
     return cartItemsTotal
 }
