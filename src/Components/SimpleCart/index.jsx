@@ -1,10 +1,11 @@
 import React from 'react'
 import { Satellite } from '@mui/icons-material'
-import {List, ListItem, ListItemText, IconButton, Typography} from '@mui/material'
+import {List, ListItem, ListItemText, IconButton, Typography, Button} from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { removeFromCart } from '../../store/actions'
 import { removeFromCartAndUpdateStock } from '../../store/actions'
+import { Link } from 'react-router-dom'
 
 const SimpleCart = ()=> {
 const cartItems = useSelector(state => state.cart.cartItems)
@@ -33,6 +34,7 @@ const handleRemove = (product) => {
                     )
                 }
             </List>
+            <Button component = {Link} to = {`/cart`}>PAY THE MAN</Button>
         </div>
     )
 

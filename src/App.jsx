@@ -5,13 +5,15 @@ import { useDispatch } from 'react-redux'
 import{category, filteredProducts} from './store/actions/'
 import { filteredProductsByCategory } from './store/actions/'
 import Products from './Components/Products'
-import SimpleCart from './Components/SimpleCart'
+import SimpleCart from './Components/SimpleCart/index.jsx'
 import { setActiveCategory } from './store/actions'
 import { Routes, Route} from 'react-router-dom'
 import { fetchCategories, fetchProducts} from './store/actions'
+import ProductDetails from './Components/Products/productDetails.jsx'
+import ShoppingCart from './Components/SimpleCart/shoppingcart.jsx'
 // import "./app.scss";
 
-function App() {
+const App=()=> {
 const dispatch  = useDispatch();
 
 useEffect(()=>{
@@ -30,6 +32,8 @@ const handleClick = (payload)=>{
       <Routes>
         <Route path = '/'element = {<><Categories handleClick = {handleClick}/>
         <Products /></>}> </Route>
+        <Route path = '/products/:id' element = {<ProductDetails/>}/>
+        <Route path = '/cart' element = {<ShoppingCart/>}/>
       </Routes>
     </>
   )
