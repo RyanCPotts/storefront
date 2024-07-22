@@ -1,42 +1,48 @@
-import Header from './Components/Header'
-import Categories from './Components/Categories'
-import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import{category, filteredProducts} from './store/actions/'
-import { filteredProductsByCategory } from './store/actions/'
-import Products from './Components/Products'
-import SimpleCart from './Components/SimpleCart/index.jsx'
-import { setActiveCategory } from './store/actions'
-import { Routes, Route} from 'react-router-dom'
-import { fetchCategories, fetchProducts} from './store/actions'
-import ProductDetails from './Components/Products/productDetails.jsx'
-import ShoppingCart from './Components/SimpleCart/shoppingcart.jsx'
-// import "./app.scss";
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
 
-const App=()=> {
-const dispatch  = useDispatch();
+import Header from './Components/Header';
+import Categories from './Components/Categories';
+import Products from './Components/Products';
+import SimpleCart from './Components/SimpleCart';
+import ProductDetails from './Components/Products/productDetails';
+import ShoppingCart from './Components/SimpleCart/shoppingcart';
 
-useEffect(()=>{
-  dispatch(fetchCategories());
-  dispatch(fetchProducts());
-},[dispatch])
+import { fetchCategories, fetchProducts, setActiveCategory, filteredProductsByCategory } from './store/actions';
 
-const handleClick = (payload)=>{
-  dispatch(setActiveCategory(payload))
-  dispatch(filteredProductsByCategory(payload))
-}
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  const handleClick = (categoryName) => {
+    dispatch(setActiveCategory(categoryName));
+    dispatch(filteredProductsByCategory(categoryName));
+  };
+
   return (
     <>
-      <Header/>
-      <SimpleCart/>
+      <Header />
+      <SimpleCart />
       <Routes>
-        <Route path = '/'element = {<><Categories handleClick = {handleClick}/>
-        <Products /></>}> </Route>
-        <Route path = '/products/:id' element = {<ProductDetails/>}/>
-        <Route path = '/cart' element = {<ShoppingCart/>}/>
+        <Route
+          path="/"
+          element={
+            <>
+              <Categories handleClick={handleClick} />
+              <Products />
+            </>
+          }
+        />
+        <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="/cart" element={<ShoppingCart />} />
       </Routes>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
