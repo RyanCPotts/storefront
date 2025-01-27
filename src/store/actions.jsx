@@ -1,8 +1,9 @@
 
 import axios from 'axios'
 import {v4 as uuidv4} from 'uuid'
-const API_URL = import.meta.env.VITE_API_SERVER;
-console.log(API_URL)
+const API_URL = import.meta?.env?.VITE_API_SERVER || process.env.VITE_API_SERVER;
+export default API_URL;
+
 // export const SET_CATEGORIES = 'CATEGORY'
 // export const ADD_TO_CART = 'ADD_TO_CART'
 // export const SET_PRODUCTS = 'FILTER_PRODUCTS'
