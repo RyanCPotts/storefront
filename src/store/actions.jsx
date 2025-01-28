@@ -1,7 +1,11 @@
 
-import axios from 'axios'
-import {v4 as uuidv4} from 'uuid'
-const API_URL = import.meta?.env?.VITE_API_SERVER || process.env.VITE_API_SERVER;
+import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
+
+const API_URL = typeof import.meta !== 'undefined' && import.meta.env
+  ? import.meta.env.VITE_API_SERVER
+  : process.env.VITE_API_SERVER;
+
 export default API_URL;
 
 // export const SET_CATEGORIES = 'CATEGORY'
