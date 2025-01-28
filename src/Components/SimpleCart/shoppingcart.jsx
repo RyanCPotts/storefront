@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 
+
 const ShoppingCart = () => {
   const cartItems = useSelector(state => state.cart.cartItems);
   console.log(cartItems);
@@ -44,7 +45,6 @@ const ShoppingCart = () => {
     console.log('CVV:', cvv);
     handleCheckout();
   };
-
   return (
     <Box>
       <Typography variant="h2">Shopping Cart</Typography>
@@ -117,6 +117,7 @@ const ShoppingCart = () => {
       </Box>
     </Box>
   );
+{'}'};
 };
 
 export default ShoppingCart;

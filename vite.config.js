@@ -5,5 +5,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     open: true,
+    mimeTypes: {
+      'text/jsx': 'text/javascript',
+    },
   },
 });
