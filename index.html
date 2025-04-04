@@ -6,24 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React</title>
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
       body {
         margin: 0;
         font-family: 'Roboto', sans-serif;
-        background-color: black;
+        background: url('https://source.unsplash.com/random/1920x1080') no-repeat center center fixed;
         background-size: cover;
         color: #f3cccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
       }
+
       #root {
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100vh;
+        width: 100%;
         background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin: 0;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
     </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <h1>Welcome to Our Store</h1>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
